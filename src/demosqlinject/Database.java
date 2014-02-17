@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author hammerhead
  */
-public class Database {
+public class Database implements DatabaseInterface{
 
     private String password;
     private String userName;
@@ -35,12 +35,13 @@ public class Database {
 
     }
 
-    public boolean vulnLogin(String username, String password) {
+    @Override
+    public boolean vulnLogin(String inputUsername, String userPassword) {
         boolean check = false;
         try {
             try (Connection c = setUpConnection()) {
 
-                String query = "select * from admins where username='" + username + "' and password='" + password + "'";
+                String query = "select * from admins where username='" + inputUsername + "' and password='" + userPassword + "'";
                 stmt = c.createStatement();
                 rs = stmt.executeQuery(query);
                 if (rs.next()) {
@@ -67,7 +68,8 @@ public class Database {
 
     }
 
-    public boolean secureLogin(String username, String password) {
+    @Override
+    public boolean secureLogin(String inputUsername, String userPassword) {
         boolean check = false;
 
         try {
@@ -75,8 +77,8 @@ public class Database {
 
                 String query = "SELECT * FROM admins WHERE username=? AND password=? ";
                 pstmt = c.prepareStatement(query);
-                pstmt.setString(1, username);
-                pstmt.setString(2, password);
+                pstmt.setString(1, inputUsername);
+                pstmt.setString(2, userPassword);
                 rs = pstmt.executeQuery();
                 if (rs.next()) {
 
