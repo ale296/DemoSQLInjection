@@ -13,7 +13,7 @@ Change password and username to your mysql preferences in the MainFrame class ro
 
 Also change if needed, the jdbc driver in Database class! row 109. I use mariaDB.
 
-Only valid password and username:
+Only valid password and username in the database is:
 
 username: admin
 password: admin
