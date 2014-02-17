@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    DatabaseInterface db = new Database("userdatabase", "mako", "whatevs");//Change password and username to your mysql preferences!!! 
+    DatabaseInterface db = new Database("userdatabase", "username", "password");//Change password and username to your mysql preferences!!! 
 
     public MainFrame() {
         initComponents();
