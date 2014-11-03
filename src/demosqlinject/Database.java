@@ -37,7 +37,7 @@ public class Database implements DatabaseInterface{
 
     @Override
     public boolean vulnLogin(String inputUsername, String userPassword) {
-        boolean check = false;
+        boolean check = true; //fix
         try {
             try (Connection c = setUpConnection()) {
 
